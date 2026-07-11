@@ -1,0 +1,19 @@
+# === SECRETS — never commit ===
+# Obsidian writes your saved API keys here at runtime. Keep it out of git.
+data.json
+
+# === Build output (shipped via GitHub release, not the repo) ===
+main.js
+*.js.map
+*.map
+
+# === Dependencies ===
+node_modules/
+
+# === Editor / tooling / OS junk ===
+.vscode/
+.idea/
+*.iml
+.mimocode/
+.DS_Store
+*.log

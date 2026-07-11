@@ -1,0 +1,11 @@
+{
+  "id": "api-key-checker",
+  "name": "AI API Key Checker",
+  "version": "1.0.0",
+  "minAppVersion": "1.7.2",
+  "description": "Validate API keys and check rate limits for 20+ AI providers",
+  "author": "VenvStore",
+  "authorUrl": "https://t.me/venvstorebot",
+  "fundingUrl": "https://t.me/venvstorebot",
+  "isDesktopOnly": true
+}
