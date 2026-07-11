@@ -12,7 +12,7 @@
   <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square"></a>
   <a href="https://obsidian.md/"><img alt="Obsidian" src="https://img.shields.io/badge/-Obsidian-7C3AED?style=flat-square&logo=obsidian&logoColor=white"></a>
   <a href="https://community.obsidian.md/plugins/api-key-checker"><img alt="Community Plugin" src="https://img.shields.io/badge/Community%20Plugin-Published-7C3AED?style=flat-square&logo=obsidian&logoColor=white"></a>
-  <a href="https://github.com/Kigrok/api-key-checker/releases"><img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue?style=flat-square"></a>
+  <a href="https://github.com/Kigrok/api-key-checker/releases"><img alt="Version" src="https://img.shields.io/badge/version-1.0.1-blue?style=flat-square"></a>
   <a href="https://github.com/Kigrok/api-key-checker/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/Kigrok/api-key-checker/total?style=flat-square&color=brightgreen"></a>
   <img alt="Platform" src="https://img.shields.io/badge/platform-desktop%20%26%20mobile-8a8a9a?style=flat-square">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-3fb950?style=flat-square">

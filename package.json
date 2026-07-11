@@ -1,6 +1,6 @@
 {
   "name": "api-key-checker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Validate API keys and check rate limits for 20+ AI providers",
   "main": "main.js",
   "type": "module",
