@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Obsidian community plugin **"AI API Key Checker"** (`manifest.json` id: `api-key-checker`). It validates API keys and detects rate limits / spent balances for 21 AI providers, rendering results in a sidebar panel. Desktop-only (`isDesktopOnly: true`) because key checking uses Node's `https` module directly.
+Obsidian community plugin **"AI API Key Checker"** (`manifest.json` id: `api-key-checker`). It validates API keys and detects rate limits / spent balances for 21 AI providers, rendering results in a sidebar panel. Works on desktop and mobile (`isDesktopOnly: false`) — all HTTP goes through Obsidian's `requestUrl`, no Node APIs.
 
 This directory sits inside an Obsidian vault (`.obsidian/plugins/checker/`). The vault root has its own unrelated `CLAUDE.md` for Markdown-note editing — ignore it here; this is a software project.
 
@@ -33,7 +33,7 @@ Two source files with a clean split — **`checker.ts` is pure logic with no Obs
 - **`checkKey(provider, key)`** is the single public entry point. It builds `id = "provider:key"` and dispatches through the **`CHECKERS` registry** (provider name → async checker function). Unknown providers return an `Error` result.
 - Every checker returns a **`CheckResult`** with `status: 'Valid' | 'Invalid' | 'Error' | 'No balance'`. Construct these only via the helpers `ok()` / `invalid()` / `noBalance()` / `error()` / `httpError()` — don't build the object literal inline.
 - **Two HTTP paths, chosen per provider:**
-  - `httpsPost()` — raw Node `https`, used when the **response body matters** (parsing reset times, quota IDs, credit messages). Returns `{ status, text }`.
+  - `httpsPost()` — Obsidian `requestUrl` with `throw: false`, used when the **response body matters** (parsing reset times, quota IDs, credit messages). Returns `{ status, text }`.
   - `safeGet()` — Obsidian's `requestUrl`, for simple GET checks where the **status code alone** decides validity. It reverse-engineers the status from `requestUrl`'s thrown error message when non-2xx.
   - `chatPost()` wraps `httpsPost` for the many OpenAI-compatible `/chat/completions` endpoints (sends `max_tokens: 1`, a one-word "hi").
 - **The value of this plugin is the per-provider quirks**, not the plumbing. Each provider signals "valid but out of balance/rate-limited" differently — a 402, a 403 with a "credits" substring, a 429 with a `QuotaFailure` detail block, a 200 with an empty body (Kimchi), etc. The distinction between `Invalid` (bad key) and `No balance` (good key, no quota) lives in these branches. When touching a checker, preserve its exact status-code + body-substring logic.

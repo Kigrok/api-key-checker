@@ -33,7 +33,7 @@ Lint bar: 0 errors. Only accepted warnings are the plugin's proper name flagged 
 ## Conventions
 
 - TypeScript, strict null checks — uses Obsidian API types (`import from 'obsidian'`). No `any`; parse provider error bodies via `parseJson()` + typed `ErrorBody`/`errMessage()`/`errObject()` helpers
-- HTTP: `httpsPost()` (native `https`, static `import { request } from 'https'`) for providers where the response body matters; `safeGet()` (Obsidian `requestUrl`) for simple GET checks. Node `https` is why the plugin is `isDesktopOnly`
+- HTTP: `httpsPost()` (Obsidian `requestUrl` with `throw: false`) for providers where the response body matters; `safeGet()` (Obsidian `requestUrl`) for simple GET checks. No Node APIs — plugin runs on desktop and mobile
 - Provider checkers use helper functions: `ok()`, `invalid()`, `noBalance()`, `error()`, `httpError()`
 - `chatPost()` helper for OpenAI-compatible chat completion endpoints
 - Status values: `Valid`, `Invalid`, `No balance`, `Error`

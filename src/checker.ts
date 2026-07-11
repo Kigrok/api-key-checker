@@ -1,6 +1,4 @@
 import { requestUrl } from 'obsidian';
-import { request as httpsRequest } from 'https';
-import type { IncomingMessage } from 'http';
 
 // ============================================================
 // Types
@@ -101,28 +99,13 @@ function errObject(b: ErrorBody | null): ErrorObject | null {
 }
 
 /**
- * Sends an HTTPS POST request with timeout support.
- * Uses Node.js `https` module (desktop only).
+ * Sends an HTTPS POST request via Obsidian's `requestUrl`.
+ * `throw: false` keeps the response body available on non-2xx statuses,
+ * which the per-provider checkers need to tell "invalid" from "no balance".
  */
-function httpsPost(url: string, headers: Record<string, string>, body: string, timeoutMs: number = 15000): Promise<HttpResponse> {
-  return new Promise((resolve, reject) => {
-    const u: URL = new URL(url);
-    const req = httpsRequest({
-      hostname: u.hostname,
-      path: u.pathname + u.search,
-      method: 'POST',
-      headers,
-      timeout: timeoutMs,
-    }, (res: IncomingMessage) => {
-      let data: string = '';
-      res.on('data', (chunk: Buffer) => data += chunk.toString());
-      res.on('end', () => resolve({ status: res.statusCode || 0, text: data }));
-    });
-    req.on('error', reject);
-    req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
-    req.write(body);
-    req.end();
-  });
+async function httpsPost(url: string, headers: Record<string, string>, body: string): Promise<HttpResponse> {
+  const res = await requestUrl({ url, method: 'POST', headers, body, throw: false });
+  return { status: res.status, text: res.text };
 }
 
 /**

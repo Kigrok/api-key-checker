@@ -9,10 +9,12 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-7c6cff">
-  <img alt="Obsidian" src="https://img.shields.io/badge/Obsidian-%E2%89%A5%201.7.2-7c6cff">
-  <img alt="Platform" src="https://img.shields.io/badge/platform-desktop-8a8a9a">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-3fb950">
+  <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square"></a>
+  <a href="https://obsidian.md/"><img alt="Obsidian" src="https://img.shields.io/badge/-Obsidian-7C3AED?style=flat-square&logo=obsidian&logoColor=white"></a>
+  <a href="https://github.com/Kigrok/api-key-checker/releases"><img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue?style=flat-square"></a>
+  <a href="https://github.com/Kigrok/api-key-checker/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/Kigrok/api-key-checker/total?style=flat-square&color=brightgreen"></a>
+  <img alt="Platform" src="https://img.shields.io/badge/platform-desktop%20%26%20mobile-8a8a9a?style=flat-square">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-3fb950?style=flat-square">
 </p>
 
 ---
@@ -46,8 +48,6 @@
 ### Via BRAT
 
 Add this repository in the [BRAT](https://github.com/TfTHacker/obsidian42-brat) plugin to auto-update from releases.
-
-> **Desktop only.** Key checking uses Node's `https` module directly, so the plugin does not run on Obsidian mobile.
 
 ---
 
@@ -108,6 +108,7 @@ Add this repository in the [BRAT](https://github.com/TfTHacker/obsidian42-brat) 
 Your keys never leave your machine except to reach the provider you are validating.
 There is no telemetry, no analytics, and no third-party server in between.
 Keys are stored locally in `.obsidian/plugins/api-key-checker/data.json` — treat that file as a secret and never commit it.
+The **click-to-copy** feature writes the selected key to your system clipboard only when you click it; the plugin never reads clipboard content.
 
 ---
 

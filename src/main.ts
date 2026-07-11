@@ -106,7 +106,7 @@ export default class APIKeyCheckerPlugin extends Plugin {
   async onload(): Promise<void> {
     await this.loadSettings();
     this.registerView(VIEW_TYPE, (leaf: WorkspaceLeaf) => new CheckerView(leaf, this));
-    this.addRibbonIcon('key', 'AI API Key Checker', () => { void this.activateView(); });
+    this.addRibbonIcon('key', 'AI API key checker', () => { void this.activateView(); });
 
     this.addCommand({
       id: 'check-api-keys',
@@ -171,7 +171,7 @@ class CheckerView extends ItemView {
   }
 
   getViewType(): string { return VIEW_TYPE; }
-  getDisplayText(): string { return 'AI API Key Checker'; }
+  getDisplayText(): string { return 'AI API key checker'; }
   getIcon(): string { return 'key'; }
 
   /** Initializes the view container and triggers first render. */
@@ -215,7 +215,7 @@ class CheckerView extends ItemView {
   /** Renders the header with title and action buttons. */
   private renderHeader(container: HTMLElement): void {
     const header: HTMLElement = container.createDiv({ cls: 'akc-header' });
-    header.createEl('h2', { text: 'AI API Key Checker' });
+    header.createEl('h2', { text: 'AI API key checker' });
     const buttons: HTMLElement = header.createDiv({ cls: 'akc-buttons' });
 
     new ButtonComponent(buttons).setButtonText('Add key').setCta()
